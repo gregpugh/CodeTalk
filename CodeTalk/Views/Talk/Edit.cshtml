@@ -1,10 +1,10 @@
 ﻿@model CodeTalk.Domain.Models.Talk
 
 @{
-    ViewBag.Title = "Insert";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Insert</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -12,6 +12,8 @@
 
     <fieldset>
         <legend>Talk</legend>
+
+        @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -29,24 +31,22 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.DateCreated)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateCreated)
-            @Html.ValidationMessageFor(model => model.DateCreated)
-        </div>
+         <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateCreated)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateCreated)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateModified)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateModified)
-            @Html.ValidationMessageFor(model => model.DateModified)
-        </div>*@
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateModified)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateModified)
+    </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

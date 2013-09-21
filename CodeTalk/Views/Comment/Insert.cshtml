@@ -1,0 +1,50 @@
+﻿@model CodeTalk.Domain.Models.Comment
+
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Comment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommenterName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommenterName)
+            @Html.ValidationMessageFor(model => model.CommenterName)
+        </div>
+         @*@Html.HiddenFor(model => model.TalkId)*@
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TalkId)
+            @Html.ValidationMessageFor(model => model.TalkId)
+        </div>
+      
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

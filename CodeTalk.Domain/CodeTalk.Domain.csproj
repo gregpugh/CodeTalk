@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Repositories\ICommentRepository.cs" />
     <Compile Include="Contracts\Repositories\ITalkRepository.cs" />
+    <Compile Include="Contracts\Services\ICommentService.cs" />
     <Compile Include="Contracts\Services\ITalkService.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Talk.cs" />
