@@ -8,7 +8,7 @@ using CodeTalk.Domain.Models;
 
 namespace CodeTalk.DataSource
 {
-    class CodeTalkContext: DbContext
+    public class CodeTalkContext: DbContext
     {
         //public CodeTalkContext()
         //    : base("DefaultConnection")
@@ -16,5 +16,6 @@ namespace CodeTalk.DataSource
         //}
 
         public DbSet<Talk> Talks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

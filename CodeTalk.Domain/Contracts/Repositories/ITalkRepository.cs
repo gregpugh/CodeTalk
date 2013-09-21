@@ -12,7 +12,8 @@ namespace CodeTalk.Domain.Contracts.Repositories
     {
         IQueryable<Talk> GetTalks();
         bool AddTalk(Talk newTalk);
-        
-        
+        void EditTalk(Talk talk);
+        void DeleteTalk(Talk talk);
+        Talk GetTalkById(int id);        
     }
 }

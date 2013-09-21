@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CodeTalk.Domain.Models;
+using CodeTalk.ServiceLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,22 +13,40 @@ namespace CodeTalk.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            TalkService talkService = new TalkService();
+            ViewBag.Talks = talkService.GetTalks().OrderByDescending(t => t.DateCreated);
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult SubmitTalk()
         {
             ViewBag.Message = "Your app description page.";
 
             return View();
         }
-
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult SubmitTalk(Talk talk)
         {
-            ViewBag.Message = "Your contact page.";
+            var talkService = new TalkService();
+            talkService.AddTalk(talk);
+            return RedirectToAction("Index");
+           
+        }
 
-            return View();
+        public ActionResult AddComment(int id)
+        {
+
+            Comment comment = new Comment() { TalkId = id };
+            return View(comment);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(Comment newComment)
+        {
+            var commentService = new CommentService();
+            commentService.AddComment(newComment);
+
+            return RedirectToAction("Index");
         }
     }
 }
